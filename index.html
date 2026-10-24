@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusFlow | Productivity App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>FocusFlow</h1>
+        <p>Plan your day.Focus on what matters</p>
+    </header>
+    <main>
+        
+<section class="dashboard">
+    <h2>My Dashboard</h2>
+
+    <div class="dashboard-cards">
+        <div class="dashboard-card total-card">
+            <h3>Total Tasks</h3>
+            <p id="totalTasks">0</p>
+        </div>
+
+        <div class="dashboard-card completed-card">
+            <h3>Completed</h3>
+            <p id="completedTasks">0</p>
+        </div>
+
+        <div class="dashboard-card remaining-card">
+            <h3>Remaining</h3>
+            <p id="remainingTasks">0</p>
+        </div>
+    </div>
+
+    <div class="progress-section">
+        <div class="progress-info">
+            <span>Overall Progress</span>
+            <span id="progressText">0%</span>
+        </div>
+
+        <div class="progress-track">
+            <div id="progressBar"></div>
+        </div>
+    </div>
+</section>
+
+        <section class="task-section">
+            <h2>My Tasks</h2>
+            <form id="taskForm">
+                <input type="text" id="taskInput" placeholder="What do you need to do?" required>
+
+
+<select id="taskCategory">
+    <option value="Work">Work</option>
+    <option value="Personal">Personal</option>
+    <option value="Study">Study</option>
+</select>
+
+<input type="date" id="taskDueDate">
+
+                <button type="submit">Add Task</button>
+            </form>
+            <input type="text" id="searchInput" placeholder="Search tasks...">
+<div class="task-filters">
+    <button type="button" class="filter-btn active" data-filter="all">All</button>
+    <button type="button" class="filter-btn" data-filter="active">Active</button>
+    <button type="button" class="filter-btn" data-filter="Completed">Completed</button>
+</div>
+            <div id="taskList"></div>
+        </section>
+
+
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
