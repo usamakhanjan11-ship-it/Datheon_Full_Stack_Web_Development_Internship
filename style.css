@@ -1,0 +1,459 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial,  sans-serif;
+    background-color: #f3f5fb;
+    color: #1e293b;
+    min-height: 100vh;
+}
+header {
+    background:#ffffff ;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+header h1 {
+    color: #4f46e5;
+    font-size: 32px;margin-bottom: 8px;
+}
+header p {
+    color: #64748b;
+}
+.task-section {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 28px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); 
+}
+.task-section h2 {
+    margin-bottom: 20px;
+
+}
+#taskForm {
+    display: flex;
+    gap: 10px;
+}
+#taskInput {
+    flex: 1;
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+
+}
+#taskInput:focus {
+       outline: 2px solid #a5b4fc;
+    border-color: #4f46e5;
+}
+button {
+    padding: 13px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #4f46e5;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+button:hover {
+    background: #3730a3;
+    transform: translateY(-2px);
+}
+#taskList {
+    margin-top: 20px;
+}
+@media (max-width: 520px) {
+    .task-section {
+        margin: 20px 12px;
+        padding: 20px;
+    }
+     #taskForm {
+        flex-direction: column;
+    }
+}
+.task-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    color: #1e293b;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.task-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(15, 23, 42, 0.08);
+}
+
+.task-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task-card span {
+    flex: 1;
+    overflow-wrap: anywhere;
+}
+
+.task-card .completed {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+.task-card button {
+    padding: 9px 12px;
+    flex-shrink: 0;
+}
+
+.task-card button:last-child {
+    background: #dc2626;
+}
+
+.task-card button:last-child:hover {
+    background: #b91c1c;
+}
+
+@media (max-width: 520px) {
+    .task-card {
+        flex-wrap: wrap;
+    }
+}
+
+#taskForm select,
+#taskForm input[type="date"] {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #1e293b;
+    min-width: 0;
+}
+
+.task-details {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.task-filters {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.task-filters .filter-btn {
+    background: #e2e8f0;
+    color: #334155;
+    padding: 9px 14px;
+}
+
+.task-filters .filter-btn.active {
+    background: #4f46e5;
+    color: #ffffff;
+}
+
+/* Search box styling */
+#searchInput {
+    width: 100%;
+    padding: 14px 16px;
+    margin: 20px 0;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    background-color: #ffffff;
+    color: #1f2937;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchInput::placeholder {
+    color: #9ca3af;
+}
+
+#searchInput:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Smooth animation for task cards */
+.task-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    animation: taskAppear 0.45s ease both;
+}
+
+/* 3D hover effect */
+.task-card:hover {
+    transform: perspective(1000px) translateY(-5px) rotateX(2deg) rotateY(-1deg);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Task card entrance animation */
+@keyframes taskAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Buttons animation */
+button {
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+}
+
+button:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Input focus animation */
+input:focus,
+select:focus {
+    transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Respect reduced-motion accessibility settings */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Professional task card design */
+.task-card {
+    position: relative;
+    padding: 18px;
+    margin-bottom: 14px;
+    border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Category badge */
+.category-badge {
+    display: inline-block;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.category-work {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.category-personal {
+    background: #fce7f3;
+    color: #9d174d;
+}
+
+.category-study {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* Completed task */
+.task-card[data-completed="true"] .task-text {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+/* Overdue task */
+.task-card.overdue {
+    border-left: 5px solid #dc2626;
+    background: #fff7f7;
+}
+
+/* Small overdue label */
+.overdue-label {
+    color: #dc2626;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Dashboard layout */
+.dashboard {
+    margin-bottom: 30px;
+}
+
+.dashboard h2 {
+    margin-bottom: 18px;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.dashboard-card {
+    padding: 20px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #4b5563;
+}
+
+.dashboard-card p {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.total-card {
+    background: #eef2ff;
+    color: #4338ca;
+}
+
+.completed-card {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.remaining-card {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+/* Progress bar */
+.progress-section {
+    margin-top: 22px;
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.progress-track {
+    height: 12px;
+    overflow: hidden;
+    background: #e5e7eb;
+    border-radius: 20px;
+}
+
+#progressBar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+/* Mobile responsive layout */
+/* Dashboard - Desktop */
+.dashboard {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 24px;
+    margin: 0 auto 28px;
+}
+
+.dashboard h2 {
+    margin: 0 0 24px;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* Dashboard - Mobile */
+@media (max-width: 600px) {
+    .dashboard {
+        padding: 16px;
+    }
+
+    .dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-card {
+        padding: 16px;
+    }
+}
+
+.dashboard h2 {
+    margin: 0 0 24px;
+}
+
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #64748b;
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.empty-state h3 {
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    margin: 0;
+    font-size: 15px;
+}
